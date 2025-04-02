@@ -1,0 +1,120 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title" data-i18n="profile"></h3>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="settings">
+                        <div class="box p-15">
+                            <form class="form-horizontal form-element col-12" id="infoForm">
+                                <div class="form-group row">
+                                    <label for="inputName" class="col-sm-3 control-label" data-i18n="name"></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputName" value="{{.Username}}" required>
+                                    </div>
+                                </div>
+                                {{if eq .Vault ""}}
+                                <div class="form-group row">
+                                    <label for="inputEmail" class="col-sm-3 control-label" data-i18n="email"></label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="inputEmail" value="{{.Email}}">
+                                    </div>
+                                </div>
+                                {{else}}
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label" data-i18n="email"></label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" value="{{.Email}}" disabled>
+                                    </div>
+                                </div>
+                                {{end}}
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-3 control-label" data-i18n="password"></label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" id="inputPassword" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="ml-auto col-sm-9">
+                                        <button type="submit" class="btn btn-success" id="saveChangeInformation" data-i18n="save"></button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-i18n="change-password">
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel" data-i18n="change-password"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="u-password" class="col-sm-3 control-label" data-i18n="password"></label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="u-password" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="u-newPassword" class="col-sm-3 control-label" data-i18n="new-password"></label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="u-newPassword" name="newPassword" data-validation-required-message="This field is required" aria-invalid="false">
+                        <div class="help-block"></div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="u-confirmPassword" class="col-sm-3 control-label" data-i18n="confirm-password"></label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="u-confirmPassword"  data-validation-match-match="newPassword">
+                        <div class="help-block"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" style="background: #ccc" data-dismiss="modal" data-i18n="close"></button>
+                <button type="button" class="btn btn-info" data-dismiss="modal" data-i18n="save" id="updatePassword"></button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!-- Modal cap nhat -->
+<div class="modal fade update-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="updateModalLabel">Confirm Change</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to change your profile?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmUpdate" class="btn btn-danger">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/main/js/web/users/information.js"></script>

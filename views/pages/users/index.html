@@ -1,0 +1,255 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title" data-i18n="manager-users"></h3>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-idx" id="openAddUserModal" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <i class="fa fa-plus" aria-hidden="true"></i> <span data-i18n="add-user"></span>
+                    </button>
+                    <div class="table-responsive">
+                        <table id="userTable" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                            <thead>
+                              <tr>
+                                <th style="width: 20px">#</th>
+                                <th><p data-i18n="name"></p></th>
+                                <th><p data-i18n="email"></p></th>
+                                <th><p data-i18n="role"></p></th>
+                                <th><p data-i18n="type"></p></th>
+                                <th><p data-i18n="type-account"></p></th>
+                                <th style="width: fit-content"><p data-i18n="action"></p></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Modal add-->
+<div class="modal modal-add-user fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title"><span data-i18n="add-user"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name"><span data-i18n="name"></span></label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ti-user"></i></span>
+                        </div>
+                        <input type="text" id="name" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email"><span data-i18n="email"></span></label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ti-email"></i></span>
+                        </div>
+                        <input type="email" id="email" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password"><span data-i18n="password"></span></label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ti-tag"></i></span>
+                        </div>
+                        <input type="password" id="password" class="form-control">
+                    </div>
+                </div>
+                <!-- Role Dropdown -->
+                <div class="form-group">
+                    <label for="role_id"><span data-i18n="role"></span></label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ti-id-badge"></i></span>
+                        </div>
+                        <select id="role_id" name="role_id" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="type_user_id"><span data-i18n="type-user"></span></label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ti-tag"></i></span>
+                        </div>
+                        <select id="type_user_id" name="type_user_id" class="form-control">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-i18n="cancel"></span></button>
+                <button type="button" id="saveUser" class="btn btn-primary"><span data-i18n="save"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Xóa-->
+<!-- Modal Xóa -->
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to Delete this User</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal edit-->
+<div class="modal modal-edit-user fade bs-example-modal-lg" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title"><span data-i18n="edit-user"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <input type="hidden" id="editUserId">
+
+                    <div class="form-group">
+                        <label><span data-i18n="name"></span></label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-user"></i></span>
+                            </div>
+                            <input type="text" id="editName" name="name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><span data-i18n="email"></span></label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-email"></i></span>
+                            </div>
+                            <input type="email" id="editEmail" name="email" class="form-control">
+                        </div>
+                    </div>
+                    <!-- Role Dropdown -->
+                    <div class="form-group">
+                        <label><span data-i18n="role"></span></label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-id-badge"></i></span>
+                            </div>
+                            <select id="editRoleId" name="role_id" class="form-control">
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Type User Dropdown -->
+                    <div class="form-group">
+                        <label><span data-i18n="type-user"></span></label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-tag"></i></span>
+                            </div>
+                            <select id="editTypeUserId" name="type_user_id" class="form-control">
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-i18n="cancel"></span></button>
+                <button type="button" id="updateUserBtn" class="btn btn-primary"><span data-i18n="save"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-edit-password fade bs-example-modal-lg" id="editPassword" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div id="editUserForm2">
+                    <input type="hidden" id="editUserId2">
+
+                    <!-- New Password -->
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-lock"></i></span>
+                            </div>
+                            <input type="password" id="newPassword" name="new_password" class="form-control" placeholder="Enter new password">
+                        </div>
+                    </div>
+
+                    <!-- Confirm New Password -->
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-lock"></i></span>
+                            </div>
+                            <input type="password" id="confirmPassword" name="confirm_password" class="form-control" placeholder="Confirm new password">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="updatePasswordBtn" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/main/js/web/users/index.js"></script>
+<!-- Vendor JS -->
+
+
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vn">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="/images/logo.png">
+    <title>LMS</title>
+    <!-- Vendors Style-->
+    <link rel="stylesheet" href="/main/css/vendors_css.css">
+    <link rel="stylesheet" href="/main/css/style.css">
+    <link rel="stylesheet" href="/main/css/skin_color.css">
+    <link rel="stylesheet" href="/main/css/index.css">
+
+    <link rel="stylesheet" href="/assets/vendor_components/bootstrap/dist/css/bootstrap.css">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/main/css/uikit.css">
+    <!-- jQuery -->
+<!--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
+<!--    <script src="/main/js/jquery-3.6.4.min.js"></script>-->
+    <!-- UIkit JS -->
+    <script src="/main/js/uikit.min.js"></script>
+    <script src="/main/js/uikit-icons.min.js"></script>
+    <script src="/main/js/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="/assets/vendor_components/ckeditor/ckeditor5.js"></script>
+</head>
+<body>
+<div class="body light-skin sidebar-mini theme-primary">
+    <div class="wrapper">
+        <div id="loader"></div>
+        {{ template "layouts/header" .}}
+        {{ template "layouts/sidebar" .}}
+        <div class="content-wrapper content-custom">
+            <div class="container-full">
+                {{embed}}
+            </div>
+
+        </div>
+    </div>
+    {{ template "layouts/footer" .}}
+    {{if CheckTypeUser .Ctx 1}}
+    {{else}}
+    {{ template "layouts/chat-popup" .}}
+    {{ template "layouts/feedback" .}}
+    {{end}}
+</div>
+
+</body>
+<script src="/main/js/lang/index.js"></script>
+<!-- Vendor JS -->
+<script src="/main/js/vendors.min.js"></script>
+<script src="/main/js/pages/chat-popup.js"></script>
+<script src="/assets/icons/feather-icons/feather.min.js"></script>
+<script src="/assets/vendor_plugins/bootstrap-slider/bootstrap-slider.js"></script>
+<script src="/assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
+<script src="/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+<script src="/assets/vendor_components/flexslider/jquery.flexslider.js"></script>
+<script src="/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+<script src="/assets/vendor_components/datatable/datatables.min.js"></script>
+
+<!-- App -->
+<script src="/main/js/template.js"></script>
+<script src="/main/js/pages/toastr.js"></script>
+<script src="/main/js/pages/notification.js"></script>
+<script src="/main/js/pages/slider.js"></script>
+</html>

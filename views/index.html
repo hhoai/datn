@@ -1,0 +1,305 @@
+<section class="content">
+    {{if CheckTypeUser .Ctx 4}}
+    <div class="row align-items-end">
+        <!-- Carousel Slider Only Slide -->
+        <div class="box">
+            <div class="">
+                <div id="carousel-example-generic-Indicators" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        {{range  $index, $banner := .Banners}}
+                            {{if eq $index 0}}
+                            <div class="carousel-item active">
+                                {{if eq $banner.TypeFile "mp4"}}
+                                <video height="250px" width="100%" autoplay>
+                                    <source src="/banner/{{$banner.FileName}}" type="video/mp4">
+                                </video>
+                                {{else}}
+                                <img src="/banner/{{$banner.FileName}}" alt="{{$banner.Description}}" style="width: 100%;"/>
+                                {{end}}
+                            </div>
+                            {{else}}
+                            <div class="carousel-item">
+                                {{if eq $banner.TypeFile "mp4"}}
+                                <video height="250px" width="100%" autoplay>
+                                    <source src="/banner/{{$banner.FileName}}" type="video/mp4">
+                                </video>
+                                {{else}}
+                                <img src="/banner/{{$banner.FileName}}" alt="{{$banner.Description}}" style="width: 100%;"/>
+                                {{end}}
+                            </div>
+                            {{end}}
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-1" style="position: relative; margin-bottom: 30px; width: 100%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 0px;
+        -webkit-transition: .5s;
+        transition: .5s;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-shadow: 0 0 30px 0 rgba(82, 63, 105, 0.05);
+        box-shadow: 0 0 30px 0 rgba(82, 63, 105, 0.05);">
+        <div class="box-header" style="margin: 0; padding: 20px;">
+            <h4 style="margin: 0" data-i18n="latest-news"></h4>
+        </div>
+    </div>
+    <div class="news-slider owl-carousel" id="news-slider">
+        {{range .News}}
+        <div class="box">
+            <div class="box-body">
+                <div class="text-left">
+                    <a href="/news/{{.NewsID}}/details" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; font-size: 20px" class="box-title">{{.Title}}</a>
+                    <p class="my-10">
+                        <small>
+                            <i class="fa fa-user"></i> by <a href="#">{{.CreatedBy}}</a>
+                            <span class="px-10">| </span><i class="fa fa-calendar"></i> {{.CreatedAt.Format "02-01-2006" }}
+                        </small>
+                    </p>
+                    <div class="box-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden">{{.Body}}</div>
+                    <a href="/news/{{.NewsID}}/details" class="btn btn-flat btn-primary btn-sm" style="margin-top: 10px" data-i18n="read-more"></a>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        {{end}}
+    </div>
+
+    <div class="box" style="margin-top: 20px;">
+        <div class="box-body">
+            <h2 style="text-align: center; padding: 30px 0" data-i18n="learn-from-350-companies"></h2>
+            <div class="row">
+                <img src="/images/dashboard/company_1.png" alt="" width="14.2%"/>
+                <img src="/images/dashboard/company_2.png" alt="" width="14.2%"/>
+                <img src="/images/dashboard/company_3.png" alt="" width="14.2%"/>
+                <img src="/images/dashboard/company_4.png" alt="" width="14.2%"/>
+                <img src="/images/dashboard/company_5.png" alt="" width="14.2%"/>
+                <img src="/images/dashboard/company_6.png" alt="" width="14.2%"/>
+                <img src="/images/dashboard/company_7.png" alt="" width="14.2%"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="box" style="margin-top: 50px;">
+        <div class="box-body">
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <h2 data-i18n="invest-your-career" style="text-align: center; padding: 30px 0"></h2>
+                    </div>
+                </div>
+                <div class="cds-9 css-d7c5ti cds-11 cds-grid-item cds-56">
+                    <div class="row" style="justify-content: space-between">
+                        <div class="css-ceydgi">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="24" viewBox="0 0 20 20" width="24" class="css-122yczu" id="cds-react-aria-8"><path d="M10.006 18a7.81 7.81 0 01-3.11-.625 8.064 8.064 0 01-2.552-1.719 8.065 8.065 0 01-1.719-2.551A7.819 7.819 0 012 9.99c0-1.104.208-2.14.625-3.105a8.066 8.066 0 014.27-4.26A7.819 7.819 0 0110.01 2a7.75 7.75 0 013.105.625 8.082 8.082 0 014.26 4.265A7.77 7.77 0 0118 9.994a7.81 7.81 0 01-.625 3.11 8.063 8.063 0 01-1.719 2.552 8.081 8.081 0 01-2.546 1.719 7.77 7.77 0 01-3.104.625zM10 16.5c1.806 0 3.34-.632 4.604-1.896C15.868 13.34 16.5 11.806 16.5 10s-.632-3.34-1.896-4.604C13.34 4.132 11.806 3.5 10 3.5s-3.34.632-4.604 1.896C4.132 6.66 3.5 8.194 3.5 10s.632 3.34 1.896 4.604C6.66 15.868 8.194 16.5 10 16.5zm0-1.5c-1.389 0-2.57-.486-3.542-1.458C5.486 12.569 5 11.389 5 10c0-1.389.486-2.57 1.458-3.542C7.431 5.486 8.611 5 10 5c1.389 0 2.57.486 3.542 1.458C14.514 7.431 15 8.611 15 10c0 1.389-.486 2.57-1.458 3.542C12.569 14.514 11.389 15 10 15zm0-1.5c.972 0 1.799-.34 2.48-1.02.68-.681 1.02-1.508 1.02-2.48s-.34-1.799-1.02-2.48C11.798 6.84 10.971 6.5 10 6.5s-1.799.34-2.48 1.02C6.84 8.202 6.5 9.029 6.5 10s.34 1.799 1.02 2.48c.681.68 1.508 1.02 2.48 1.02zm-.004-2c-.414 0-.767-.147-1.059-.442A1.456 1.456 0 018.5 9.996c0-.414.147-.767.442-1.059a1.456 1.456 0 011.062-.437c.414 0 .767.147 1.059.442.291.294.437.649.437 1.062 0 .414-.147.767-.442 1.059a1.456 1.456 0 01-1.062.437z" fill="currentColor"></path></svg>
+                            <div class="text-center">
+                                <h3 data-i18n="explore-new-skills"></h3>
+                                <div data-i18n="access-courses"></div>
+                            </div>
+                        </div>
+                        <div class="css-ceydgi">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="24" viewBox="0 0 20 20" width="24" class="css-122yczu" id="cds-react-aria-9"><path d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z" fill="currentColor"></path><path d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z" fill="currentColor"></path></svg>
+                            <div class="text-center">
+                                <h3 data-i18n="earn-valuable-credentials"></h3>
+                                <div data-i18n="get-cert"></div>
+                            </div>
+                        </div>
+                        <div class="css-ceydgi">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="24" viewBox="0 0 20 20" width="24" class="css-122yczu" id="cds-react-aria-10"><path d="M7.333 13.896L10 12.312l2.688 1.584-.709-3 2.313-1.98-3.063-.27L10 5.792 8.77 8.646l-3.062.27 2.334 1.98-.709 3zm2.667.166l-3.417 2.042a.747.747 0 01-.833-.042.752.752 0 01-.25-.343.706.706 0 01-.02-.448l.895-3.813-3.02-2.562a.68.68 0 01-.23-.386.887.887 0 01.02-.427.687.687 0 01.23-.343.741.741 0 01.417-.157L7.75 7.23l1.563-3.625A.754.754 0 0110 3.146a.747.747 0 01.688.458L12.25 7.25l3.958.333c.167.014.306.07.417.167a.771.771 0 01.24.77.74.74 0 01-.24.376l-3 2.562.896 3.813a.706.706 0 01-.02.448.752.752 0 01-.25.344.747.747 0 01-.834.041L10 14.063z" fill="currentColor"></path></svg>
+                            <div class="text-center">
+                                <h3 data-i18n="learn-from-the-best"></h3>
+                                <div data-i18n="take-your-skills"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box" style="margin: 50px 0;">
+        <div class="box-body" style="padding: 30px 120px 50px;">
+            <h2 class="text-center" data-i18n="search-programs" style="margin-bottom: 40px;"></h2>
+            <div class="cds-9 css-0 cds-10">
+                <div class="cds-9 css-0 cds-11 cds-grid-item cds-56">
+                    <div class="controls">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="search-content" placeholder="e.g. Machine Learning" required="" aria-invalid="false">
+                            <span class="input-group-append">
+                                  <button class="btn btn-info btn-sm search-programs" type="button" style="padding: 0 12px"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-container">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box" style="margin: 50px 0;">
+        <div class="box-body" style="padding: 30px 120px 50px;">
+            <h2 class="text-center" data-i18n="faqs" style="margin-bottom: 40px;"></h2>
+            <div class="cds-9 css-0 cds-10">
+                <div class="faqs-container">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div>
+                    <div class="box-body">
+                        <div class="box no-shadow mb-0 bg-transparent">
+                            <div class="box-header no-border px-0">
+                                <h3 class="box-title" data-i18n="dashboard" style="font-weight: 500"></h3>
+                            </div>
+                        </div>
+                        <div class="row" style="justify-content: space-around;">
+                            <a class="items" href="/users">
+                                <i class="fa fa-user" style="background-color: #0dd6b8;color:#fff;padding: 24px 26px; height: fit-content; border-radius: 50%;font-size: 24px;"></i>
+                                <div>
+                                    <div class="fs-36 count-users"></div>
+                                    <div class="fs-16"><span data-i18n="users"></span></div>
+                                </div>
+                            </a>
+                            <a class="items" href="/courses">
+                                <i class="fa fa-book" style="background-color: #ff9b8a;color:#fff;padding: 24px; height: fit-content; border-radius: 50%;font-size: 24px;"></i>
+                                <div>
+                                    <div class="fs-36 count-courses"></div>
+                                    <div class="fs-16"><span data-i18n="courses"></span></div>
+                                </div>
+                            </a>
+                            <a class="items" href="/topics" >
+                                <i class="fa fa-bell" style="background-color: #ffba68;color:#fff;padding: 24px; height: fit-content; border-radius: 50%;font-size: 24px;"></i>
+                                <div>
+                                    <div class="fs-36 count-topics"></div>
+                                    <div class="fs-16"><span data-i18n="topics"></span></div>
+                                </div>
+                            </a>
+                            <a class="items" href="/question_bank" >
+                                <i class="fa fa-question" style="background-color: #d592ff;color:#fff;padding: 24px 27px; height: fit-content; border-radius: 50%;font-size: 24px;"></i>
+                                <div>
+                                    <div class="fs-36 count-questions"></div>
+                                    <div class="fs-16"><span data-i18n="questions"></span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <div class="col-12 col-mgr">
+                            <div class="box-body">
+                                <div class="box no-shadow mb-0 bg-transparent">
+                                    <div class="box-header no-border px-0">
+                                        <h3 class="box-title" data-i18n="users" style="font-weight: 500"></h3>
+                                    </div>
+                                </div>
+                                <div class="row" style="justify-content: space-around;">
+                                    <div id="user-admin">
+
+                                    </div>
+                                    <div id="completed-course">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <div class="col-12 col-mgr">
+                            <div class="box-body">
+                                <div class="box no-shadow mb-0 bg-transparent">
+                                    <div class="box-header no-border px-0">
+                                        <h3 class="box-title" data-i18n="courses" style="font-weight: 500"></h3>
+                                    </div>
+                                </div>
+                                <div class="row" id="courses-admin">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/main/js/web/highcharts.js"></script>
+    {{end}}
+</section>
+<!-- /.content -->
+
+<div class="modal center-modal fade" id="modal-join-course" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" data-i18n="join_new_course"></h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" style="font-size: 14px; letter-spacing: .0178571429em; font-weight: 500; line-height: 1.25rem; color: #3c4043; ">
+                <div class="" style="display: flex;
+                    flex-direction: column;
+                    margin-top: 1rem;
+                    padding: 1.5rem;
+                    justify-content: space-between;
+                    max-width: 35rem;
+                    width: 100%;
+                    background-color: #fff;
+                    border: .0625rem solid #dadce0;
+                    border-radius: .5rem;
+                    overflow: hidden;
+                    ">
+                    <h5 data-i18n="course-code"></h5>
+                    <p data-i18n="req-course-code" style="font-weight: 400"></p>
+                    <div>
+                        <input type="text" id="course-code" placeholder="Course code" name="course-code" style="width: 100%;
+                            padding: 10px;
+                            outline-color: #1a73e8;">
+                    </div>
+                </div>
+                <div style="align-items: flex-start;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 1rem;
+                    max-width: 35rem;
+                    padding: 0 1.5rem;
+                    width: 100%;">
+                    <h5 data-i18n="how_to_sign_in_using_a_course_code"></h5>
+                    <ul style="list-style: disc;
+                        margin-top: .5rem;
+                        padding-left: 1rem;">
+                        <li data-i18n="use_an_authorized_account"></li>
+                        <li data-i18n="enter_the_class_code"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="close"></button>
+                <button type="button" id="join-new-course-btn" class="btn btn-primary float-right" data-i18n="join_new_course"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/main/js/web/dashboard.js"></script>
+<script src="/main/js/pages/widget-blog.js"></script>
+<script src="/main/js/web/courses/joinCourse.js"></script>
+<script src="/main/js/web/faqs/faqs.js"></script>

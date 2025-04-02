@@ -1,0 +1,108 @@
+<header class="main-header" style="height: 64px;">
+    <div class="d-flex align-items-center logo-box justify-content-start" id="container-logo">
+        <a href="/dashboard" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn" data-toggle="push-menu" role="button">
+            <span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+        </a>
+        <!-- Logo -->
+        <a href="/dashboard" class="logo">
+            <!-- logo-->
+            <div class="logo-lg">
+                <img src="/images/logo.png" alt="logo" style="height: 70px;"/>
+            </div>
+        </a>
+    </div>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <input type="hidden" value="{{CheckActivateAccount .Ctx}}" name="isActive" />
+        {{if CheckActivateAccount .Ctx}}
+        <div><p data-i18n="title-header" class="title-header"></p></div>
+        {{else}}
+        <a href="#" data-toggle="modal" data-target=".active-account-modal" style="color: red;">
+            <span data-i18n="activate_account"></span>
+        </a>
+        {{end}}
+
+        <div class="navbar-custom-menu r-side">
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                    <a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown">
+                        <img src="/images/vietnam.png" class="user-image" id="img-header" alt="">
+                    </a>
+                    <ul class="dropdown-menu animated flipInX">
+                        <li class="user-body">
+                            <a class="dropdown-item" onclick="changeLanguage('vn')"><span><img alt="" src="/images/vietnam.png" class="img-hd-cs"></span> <span data-i18n="lan-vn"></span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" onclick="changeLanguage('en')"><span><img alt="" src="/images/great-britain.png" class="img-hd-cs"></span> <span data-i18n="lan-en"></span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- User Account-->
+                <li class="dropdown user user-menu" style="height: fit-content">
+                    <a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown" title="User">
+                        <i class="icon-User"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                    <ul class="dropdown-menu animated flipInX">
+                        <li class="user-body">
+                            {{if CheckActivateAccount .Ctx}}
+                                <a class="dropdown-item" href="/information"><i class="ti-user text-muted mr-2"></i> <span data-i18n="profile"></span></a>
+                                <div class="dropdown-divider"></div>
+                                {{if CheckTypeUser .Ctx 4}}
+                                <a href="/learning-process" id="learningProcess" class="dropdown-item"><i class="ti-lock text-muted mr-2"></i> <span data-i18n="learning_process"></span></a>
+                                <div class="dropdown-divider"></div>
+                                {{end}}
+                            {{end}}
+                            <a href="#" id="logoutBtn" class="dropdown-item"><i class="ti-lock text-muted mr-2"></i> <span data-i18n="log-out"></span></a>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- Modal activate account -->
+
+<div class="modal fade active-account-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="border: none">
+                <h4 class="modal-title" id="deleteModalLabel">Activate Your Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p> Your account is not activated yet. Please check your email to activate your account.</p>
+            </div>
+            <div class="modal-footer" style="border: none">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmActive" class="btn btn-danger">Send Activation Email</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/main/js/web/index.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#logoutBtn').on('click', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '/api/v1/logout',
+                type: 'POST',
+                success: function(response) {
+                    window.location.href = '/';
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        });
+    });
+
+
+</script>
+

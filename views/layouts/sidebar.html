@@ -1,0 +1,183 @@
+{{if CheckActivateAccount .Ctx}}
+<aside class="main-sidebar sidebar-custom">
+    <!-- sidebar-->
+    <section class="sidebar">
+        <!-- sidebar menu-->
+        <!-- user -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li>
+                <a href="/dashboard">
+                    <i class="fa fa-area-chart"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="dashboard"></span>
+                </a>
+            </li>
+            {{if CheckPermission "manager_programs" .Ctx}}
+            <li>
+                <a href="/programs">
+                    <i class="fa fa-product-hunt"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-programs"></span>
+                </a>
+            </li>
+            {{end}}
+            {{if CheckTypeUser .Ctx 4}}
+            <li>
+                <a href="/student-courses">
+                    <i class="fa fa-book"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="my-courses"></span>
+                </a>
+            </li>
+            <li>
+                <a href="/student-programs">
+                    <i class="fa fa-bar-chart"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="program"></span>
+                </a>
+            </li>
+            {{end}}
+            {{if CheckPermission "manager_courses" .Ctx}}
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bookmark"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-courses"></span>
+                    <span class="pull-right-container"> <i class="fa fa-angle-right pull-right"></i> </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/courses">
+                            <span data-i18n="manager-courses"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/levels">
+                            <span data-i18n="levels"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/course_categories">
+                            <span data-i18n="course-category"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lesson_categories">
+                            <span data-i18n="lesson-category"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{end}}
+
+            <li class="treeview">
+                {{if CheckPermission "manager_questions" .Ctx}}
+                <a href="#">
+                    <i class="fa fa-question-circle"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-questions"></span>
+                    <span class="pull-right-container"> <i class="fa fa-angle-right pull-right"></i> </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/question_bank">
+                            <span data-i18n="manager-questions"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/skills">
+                            <span data-i18n="skills"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/challenges">
+                            <span data-i18n="challenges"></span>
+                        </a>
+                    </li>
+                </ul>
+                {{end}}
+            </li>
+            {{if CheckPermission "manager_topics" .Ctx}}
+            <li>
+                <a href="/topics">
+                    <i class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-exams">Manage Exams</span>
+                </a>
+            </li>
+            {{end}}
+            {{if CheckPermission "manager_users" .Ctx}}
+            <li class="treeview">
+                {{if CheckTypeUser .Ctx 1}}
+                <a href="#">
+                    <i class="fa fa-users"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-users"></span>
+                    <span class="pull-right-container"> <i class="fa fa-angle-right pull-right"></i> </span>
+                </a>
+                <ul class="treeview-menu">
+                    {{if CheckPermission "manager_users" .Ctx}}
+                    <li>
+                        <a href="/users">
+                            <span data-i18n="users"></span>
+                        </a>
+                    </li>
+                    {{end}}
+                    {{if CheckPermission "manager_roles" .Ctx}}
+                    <li>
+                        <a href="/roles">
+                            <span data-i18n="roles"></span>
+                        </a>
+                    </li>
+                    {{end}}
+                </ul>
+                {{end}}
+            </li>
+            {{end}}
+            {{if CheckPermission "manager_posts" .Ctx}}
+            <li>
+                <a href="/news">
+                    <i class="fa fa-paper-plane"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-posts"></span>
+                </a>
+            </li>
+            {{end}}
+            {{if CheckPermission "manager_banners" .Ctx}}
+            <li>
+                <a href="/banners">
+                    <i class="fa fa-cloud"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-banners"></span>
+                </a>
+            </li>
+            {{end}}
+            {{if CheckPermission "manager_faqs" .Ctx}}
+            <li>
+                <a href="/faqs">
+                    <i class="fa fa-question"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-faqs"></span>
+                </a>
+            </li>
+            {{end}}
+            {{if CheckPermission "manager_faqs" .Ctx}}
+            <li>
+                <a href="/feedback">
+                    <i class="fa fa-envelope-o"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="manager-feedback"></span>
+                </a>
+            </li>
+            {{end}}
+        </ul>
+    </section>
+
+</aside>
+{{else}}
+<aside class="main-sidebar sidebar-custom">
+    <!-- sidebar-->
+    <section class="sidebar">
+        <!-- sidebar menu-->
+        <!-- user -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="treeview">
+                <a href="/dashboard">
+                    <i class="fa fa-bars"><span class="path1"></span><span class="path2"></span></i>
+                    <span data-i18n="dashboard"></span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+</aside>
+{{end}}

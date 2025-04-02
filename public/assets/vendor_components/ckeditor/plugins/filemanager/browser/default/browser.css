@@ -1,0 +1,10 @@
+.FolderListFolder img
+{
+	background-image: url(images/Folder.png);
+}
+
+.FolderListCurrentFolder img
+{
+	background-image: url(images/FolderOpened.png);
+}
+
