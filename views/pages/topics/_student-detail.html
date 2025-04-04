@@ -1,0 +1,53 @@
+
+<style>
+
+    .lb-question{
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .question_content{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .lb-answer-inline{
+        width: auto;
+        margin: 0;
+        border: none !important;
+        border-bottom: 1px solid !important;
+    }
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-3 col-mgr"></div>
+        <div class="col-6 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h3 class="page-title" data-i18n="quiz"></h3>
+                            <h4 class="page-title custom-score"><span data-i18n="total-score"></span>: <span id="total-score"></span></h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <h3 class="page-title"><span data-i18n="score"></span>: <span id="score"></span></h3>
+                            <h4 class="page-title custom-score"><span data-i18n="minimum-score"></span>: <span id="minimum-score"></span></h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="scroll-box">
+                        <div id="questions-container">
+                        </div>
+                    </div>
+                    <hr>
+                    <div style="text-align: right">
+                        <button class="btn btn-primary btn-submit" id="btn-submit" data-i18n="submit"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/main/js/web/topics/student-detail.js"></script>

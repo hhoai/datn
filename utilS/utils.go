@@ -20,12 +20,32 @@ import (
 )
 
 var (
-	UserRepo       repo.UserRepository
-	RolePerRepo    repo.RolePerRepository
-	TypeUserRepo   repo.TypeUserRepository
-	RoleRepo       repo.RoleRepository
-	PermissionRepo repo.PermissionRepository
-	DomainEmail    string
+	UserRepo            repo.UserRepository
+	RolePerRepo         repo.RolePerRepository
+	TypeUserRepo        repo.TypeUserRepository
+	RoleRepo            repo.RoleRepository
+	PermissionRepo      repo.PermissionRepository
+	DomainEmail         string
+	CourseRepo          repo.CourseRepository
+	LessonRepo          repo.LessonRepository
+	AssignmentRepo      repo.AssignmentRepository
+	LevelRepo           repo.LevelRepository
+	CourseUserRepo      repo.CourseUserRepository
+	TypeAssignmentRepo  repo.TypeAssignmentRepository
+	LessonCategoryRepo  repo.LessonCategoryRepository
+	FileAssignmentRepo  repo.FileAssignmentRepository
+	PostRepo            repo.PostRepository
+	FilePostRepo        repo.FilePostRepository
+	UserAssignmentRepo  repo.UserAssignmentRepository
+	UserLessonRepo      repo.UserLessonRepository
+	UserProgramRepo     repo.UserProgramRepository
+	TopicAssignmentRepo repo.TopicAssignmentRepository
+	CourseCategoryRepo  repo.CourseCategoryRepository
+	TopicRepo           repo.TopicRepository
+	ProgramRepo         repo.ProgramRepository
+	QuestionBankRepo    repo.QuestionBankRepository
+	ChallengeRepo       repo.ChallengeRepository
+	SkillRepo           repo.SkillRepository
 )
 
 func init() {
@@ -35,7 +55,24 @@ func init() {
 	TypeUserRepo = repo.NewTypeUserRepository()
 	RoleRepo = repo.NewRoleRepository()
 	PermissionRepo = repo.NewPermissionRepository()
-
+	CourseRepo = repo.NewCourseRepository()
+	LessonRepo = repo.NewLessonRepository()
+	AssignmentRepo = repo.NewAssignmentRepository()
+	LevelRepo = repo.NewLevelRepository()
+	ChallengeRepo = repo.NewChallengeRepository()
+	CourseUserRepo = repo.NewCourseUserRepository()
+	TypeAssignmentRepo = repo.NewTypeAssignmentRepository()
+	LessonCategoryRepo = repo.NewLessonCategoryRepository()
+	FileAssignmentRepo = repo.NewFileAssignmentRepository()
+	PostRepo = repo.NewPostRepository()
+	FilePostRepo = repo.NewFilePostRepository()
+	UserProgramRepo = repo.NewUserProgramRepository()
+	TopicAssignmentRepo = repo.NewTopicAssignmentRepository()
+	TopicRepo = repo.NewTopicRepository()
+	CourseCategoryRepo = repo.NewCourseCategoryRepository()
+	ProgramRepo = repo.NewProgramRepository()
+	QuestionBankRepo = repo.NewQuestionBankRepository()
+	SkillRepo = repo.NewSkillRepository()
 }
 
 type Response struct {

@@ -1,0 +1,108 @@
+<style>
+
+
+    #areaAgenda,
+    .uk-padding-small{
+        padding: 0;
+    }
+
+
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-body">
+
+                    <div class="d-flex align-items-center title" >
+                        <div class="mr-auto">
+                            <h3 class="page-title" data-i18n="edit-exam"></h3>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label for="name" data-i18n="name"></label>
+                        <input id="name" type="text" class="uk-input uk-margin-small-top" placeholder="Enter name">
+                    </div>
+                    <div class="uk-margin">
+                        <label for="description" data-i18n="description"></label>
+                        <textarea id="description" class="uk-textarea uk-margin-small-top" rows="3" placeholder="Enter description"></textarea>
+                    </div>
+                    <div class="uk-margin">
+                        <label for="totalScore" data-i18n="total-score"></label>
+                        <input id="totalScore" type="number" class="uk-input uk-margin-small-top" readonly>
+                    </div>
+                    <div class="uk-margin">
+                        <label for="minimumScore" data-i18n="minimum-score"></label>
+                        <input id="minimumScore" type="number" class="uk-input uk-margin-small-top">
+                    </div>
+                    <h3 class="page-title" data-i18n="select-question"></h3>
+                    <div class="uk-margin">
+
+                        <label for="program_id" data-i18n="program"></label>
+                        <select id="program_id" class="uk-select uk-margin-small-top">
+
+                        </select>
+                    </div>
+                    <div class="uk-margin d-flex">
+                        <div class="col-md-3">
+                            <label for="type_question_id" data-i18n="type"></label>
+                            <select id="type_question_id" class="uk-select uk-margin-small-top">
+
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="level_id" data-i18n="level"></label>
+                            <select id="level_id" class="uk-select uk-margin-small-top">
+
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="skill_id" data-i18n="skill"></label>
+                            <select id="skill_id" class="uk-select uk-margin-small-top">
+
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="challenge_id" data-i18n="challenge"></label>
+                            <select id="challenge_id" class="uk-select uk-margin-small-top">
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" id="search">
+                        <button id="btnSearch" class="uk-button uk-button-primary" data-i18n="search"></button>
+
+                    </div>
+
+                    <div class="uk-margin">
+                        <div class="uk-child-width-1-2@s" id="custom">
+                            <div>
+                                <div class="uk-text-center uk-text-uppercase uk-background-default uk-padding-small uk-margin-remove-bottom">
+                                    <h4 data-i18n="question" style="margin: 0;"></h4>
+                                </div>
+                                <div id="areaAgenda" class="uk-card uk-card-primary uk-card-body uk-maring-left" uk-sortable="group: sortable-group">
+                                </div>
+
+                            </div>
+                            <div>
+                                <div class="uk-text-center uk-text-uppercase uk-background-default uk-padding-small uk-margin-remove-bottom">
+                                    <h4 data-i18n="storage" style="margin: 0;"></h4>
+                                </div>
+                                <div id="areaImprimir" class="uk-card uk-card-primary uk-card-body uk-maring-right" uk-sortable="group: sortable-group">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button id="btnUpdate" class="uk-button btn btn-success" data-i18n="save"></button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/main/js/web/topics/update.js"></script>

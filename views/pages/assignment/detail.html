@@ -1,0 +1,148 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title"><span data-i18n="lesson"></span>: <span id="page-title"></span></h3>
+                        </div>
+                    </div>
+                    <div id="assignment-container">
+                        <div id="assignment-content"></div>
+<!--                        <div id="file-topic-assignment"></div>-->
+                        <div id="file-container" style="width: fit-content; padding: 5px 105px;">
+                            <div id="file" class="media-list media-list-hover" style="width: fit-content"></div>
+                            <div id="img-file" class="media-list media-list-hover" style="width: fit-content"></div>
+                            <div id="mp4-file" class="media-list media-list-hover" style="width: fit-content"></div>
+                        </div>
+                        <div id="student-container" style="
+                                 margin: 30px 110px;
+                                 border-top: 1px solid #cfcfcf;
+                                 padding: 30px 0;">
+                            <div style="display: flex; justify-content: space-between">
+                                <div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary add-teacher"
+                                                data-toggle="modal" id="openAddTopicModal"
+                                                data-target=".create-topic-modal">
+                                            <span data-i18n="add-exam"></span>
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <div id="file-student-assignment">
+                                        <div id="file-student" class="media-list media-list-hover" style="width: fit-content"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal center-modal fade" id="preview-container" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="transform: translate(-100%, 50%) !important;">
+        <div class="modal-content" style="width:1000px;">
+            <div class="modal-header">
+                <h4 class="modal-title" data-i18n="preview_file"></h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="preview"></div>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Xóa -->
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel" data-i18n="confirm-delete-comment"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="delete-comment"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" id="confirmDelete" class="btn btn-danger" data-i18n="delete"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade create-topic-modal" id="addTeacherModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="labelAdd" data-i18n="add-exam"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="create-lesson" style="padding: 10px">
+                    <div id="create-teacher-form">
+
+                        <div class="form-group row">
+                            <label for="topic_id" class="col-sm-2 col-form-label" data-i18n="name"></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="topic_id">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: row-reverse; gap: 20px;">
+                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal"
+                                    data-i18n="cancel"></button>
+                            <button id="saveTopic" class="btn btn-success text-right" data-i18n="save"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!-- Modal Xóa -->
+<div class="modal fade delete-confirm-topic" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalTopic" data-i18n="confirm-delete-comment"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="delete-topic"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" class="btn btn-danger confirmDelete" data-i18n="delete"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/main/js/web/assignments/detail.js"></script>
+
+
+

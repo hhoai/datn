@@ -1,0 +1,167 @@
+
+<style>
+    .lb-question {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-top: 25px;
+    }
+
+    .question_content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .lb-answer-inline {
+        width: auto;
+        margin: 0;
+        border: none !important;
+        border-bottom: 1px solid !important;
+    }
+
+    .question-item {
+        /*flex: 1 0 18%;*/
+        padding: 8px !important;
+        text-align: center;
+        border: 1px solid #ddd;
+        background-color: #42b729;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #fff;
+        width: 50px;
+
+    }
+
+    #question-navigation {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+
+
+    .box-body-list{
+        background-color: #ffffff;
+        border: 1px solid #37a5f3;
+
+    }
+
+    .box-body-question{
+        background-color: #ffffff;
+        border: 1px solid #37a5f3;
+
+    }
+    .btn-next{
+        border: 1px solid #ddd;
+        color: #428bca;
+
+    }
+    .btn-next:hover {
+        background-color: #eee;
+        color: #428bca;
+    }
+
+    .btn-previous{
+        border: 1px solid #ddd;
+        color: #428bca;
+
+    }
+    .btn-previous:hover{
+        background-color: #eee;
+        color:  #428bca;
+    }
+    #btn-submit{
+        width: 100%;
+        color: #eee;
+        background-color: red;
+        border: 1px;
+        margin-top: 0;
+        height: 50px;
+        font-size: large;
+    }
+
+    h5{
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+    .green{
+        margin-top: 0;
+        color:  #42b729;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .yellow{
+        color: #f6c134;
+        font-weight: bold;
+
+    }
+    .col-4{
+        max-width: 100%;
+    }
+
+
+</style>
+
+<section class="content">
+    <div class="row" style="justify-content: space-between; align-items: stretch;">
+        <div class="col-8">
+            <div class="box">
+                <div class="box-body box-body-question">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h3 class="page-title" data-i18n="quiz"></h3>
+                            <h4 class="page-title custom-score"><span data-i18n="total-score"></span>: <span id="total-score"></span></h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <h3 class="page-title"><span data-i18n="score"></span>: <span id="score"></span></h3>
+                            <h4 class="page-title custom-score"><span data-i18n="minimum-score"></span>: <span id="minimum-score"></span></h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="question-container"></div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-previous" id="btn-previous" data-i18n="previous" style="display: none;"></button>
+                        <button class=" btn btn-next" id="btn-next" data-i18n="next"></button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="btn-submit">
+                <button class="btn-submit" id="btn-submit" data-i18n="submit"></button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="box">
+                <div class="box-body box-body-list">
+                    <h5>*Chú thích:</h5>
+                    <p class="green">Màu xanh: chưa làm<span class="yellow"> - Màu vàng: đã làm</span></p>
+
+                    <div id="question-navigation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<div class="modal fade submit-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to Submit</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmSubmit" class="btn btn-danger">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/main/js/web/topics/student-detail.js"></script>

@@ -1,0 +1,51 @@
+<section class="content">
+    <div class="row" id="courses">
+        <div class="box">
+            <div class="col-12 col-mgr">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto d-flex align-items-center justify-content-between" style="width: 100%;">
+                            <h3 class="page-title"><span data-i18n="program"></span>: {{.ProgramName}}</h3>
+                            <button class="btn btn-primary join-program" data-i18n="join-program"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{range .Courses}}
+                        <div class="col-xl-3 col-md-6 col-12">
+                            <a href="#" class="box bg-secondary-light pull-up" style="background-image: url(/images/svg-icon/color-svg/st-1.svg); background-position: right bottom; background-repeat: no-repeat;">
+                                <div class="box-body">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center pr-2 justify-content-between">
+                                            <div class="d-flex">
+                                                {{if .Status}}
+                                                <span class="badge badge-primary mr-15">Active</span>
+                                                {{else}}
+                                                <span class="badge badge-warning mr-15">Inactive</span>
+                                                <span class="badge badge-primary mr-5"><i class="fa fa-lock"></i></span>
+                                                {{end}}
+                                                <span class="badge badge-primary"><i class="fa fa-clock-o"></i></span>
+                                            </div>
+                                        </div>
+                                        <h4 class="mt-25 mb-5">{{.Title}}</h4>
+                                        <div class="progress progress-xs" style="
+                                        border-radius: 5px;
+                                        height: 8px;">
+                                            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{.LessonCompleted}}" aria-valuemin="0" aria-valuemax="{{.Lesson}}" style="width: {{.Width}};">
+                                            </div>
+                                        </div>
+                                        <p class="text-fade mb-0 font-size-12">{{.LessonCompleted}}/{{.Lesson}}
+                                            <span data-i18n="lesson-completed"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/main/js/web/program/joinProgram.js"></script>

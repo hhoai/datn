@@ -3,6 +3,9 @@ package handlers
 import (
 	"github.com/gofiber/fiber/v2"
 	"lms/repo"
+	"lms/structs"
+	"lms/utilS"
+	"time"
 )
 
 func GetDashboard(c *fiber.Ctx) error {
@@ -69,56 +72,55 @@ func GetDashboard(c *fiber.Ctx) error {
 	}, "layouts/main")
 }
 
-//
-//func ApiGetDashboard(c *fiber.Ctx) error {
-//	repo.OutPutDebug("ApiGetDashboard")
-//
-//	countUser, _ := utilS.UserRepo.CountUser()
-//	countCourse, _ := utilS.CourseRepo.CountCourse()
-//	countTopic, _ := utilS.TopicRepo.CountTopic()
-//	countQuestion, _ := utilS.QuestionBankRepo.CountQuestion()
-//
-//	courses := utilS.CourseRepo.FindAll()
-//
-//	statsNewUser := utilS.UserRepo.FindNewUsersLast7Days()
-//
-//	var rs []structs.HighchartsData
-//
-//	for i := 6; i >= 0; i-- {
-//		day := time.Now().AddDate(0, 0, -i).Format("2006-01-02")
-//		rs = append(rs, structs.HighchartsData{
-//			Date:  day,
-//			Count: 0,
-//		})
-//	}
-//
-//	for _, stat := range statsNewUser {
-//		for i, r := range rs {
-//			if stat.Date == r.Date {
-//				//res = append(res, stat)
-//				rs[i].Count = stat.Count
-//				break
-//			}
-//		}
-//	}
-//
-//	return utilS.ResultResponse(c, fiber.StatusOK, "get data dashboard successfully", fiber.Map{
-//		"CountUser":     countUser,
-//		"CountCourse":   countCourse,
-//		"CountTopic":    countTopic,
-//		"CountQuestion": countQuestion,
-//		"Courses":       courses,
-//		"CountNewUser":  rs,
-//	})
-//}
-//
-//func ApiSearchPrograms(c *fiber.Ctx) error {
-//	repo.OutPutDebug("ApiSearchPrograms")
-//	search := c.Params("q")
-//
-//	programs, err := utilS.ProgramRepo.SearchProgram(search)
-//	if err != nil {
-//		return utilS.ResultResponse(c, fiber.StatusAccepted, "search programs error", nil)
-//	}
-//	return utilS.ResultResponse(c, fiber.StatusOK, "search programs successfully", programs)
-//}
+func ApiGetDashboard(c *fiber.Ctx) error {
+	repo.OutPutDebug("ApiGetDashboard")
+
+	countUser, _ := utilS.UserRepo.CountUser()
+	countCourse, _ := utilS.CourseRepo.CountCourse()
+	countTopic, _ := utilS.TopicRepo.CountTopic()
+	countQuestion, _ := utilS.QuestionBankRepo.CountQuestion()
+
+	courses := utilS.CourseRepo.FindAll()
+
+	statsNewUser := utilS.UserRepo.FindNewUsersLast7Days()
+
+	var rs []structs.HighchartsData
+
+	for i := 6; i >= 0; i-- {
+		day := time.Now().AddDate(0, 0, -i).Format("2006-01-02")
+		rs = append(rs, structs.HighchartsData{
+			Date:  day,
+			Count: 0,
+		})
+	}
+
+	for _, stat := range statsNewUser {
+		for i, r := range rs {
+			if stat.Date == r.Date {
+				//res = append(res, stat)
+				rs[i].Count = stat.Count
+				break
+			}
+		}
+	}
+
+	return utilS.ResultResponse(c, fiber.StatusOK, "get data dashboard successfully", fiber.Map{
+		"CountUser":     countUser,
+		"CountCourse":   countCourse,
+		"CountTopic":    countTopic,
+		"CountQuestion": countQuestion,
+		"Courses":       courses,
+		"CountNewUser":  rs,
+	})
+}
+
+func ApiSearchPrograms(c *fiber.Ctx) error {
+	repo.OutPutDebug("ApiSearchPrograms")
+	search := c.Params("q")
+
+	programs, err := utilS.ProgramRepo.SearchProgram(search)
+	if err != nil {
+		return utilS.ResultResponse(c, fiber.StatusAccepted, "search programs error", nil)
+	}
+	return utilS.ResultResponse(c, fiber.StatusOK, "search programs successfully", programs)
+}

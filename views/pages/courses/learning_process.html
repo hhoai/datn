@@ -1,0 +1,36 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+
+                    <ul class="nav nav-tabs customtab2" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/{{.UserID}}/courses">
+                                <span class="hidden-sm-up"><i class="ion-person"></i></span>
+                                <span class="hidden-xs-down" data-i18n="courses"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/{{.UserID}}/learning_process" style="
+                background-color: #fff;
+                color: #0052cc;
+                border-bottom: 2px solid #0052cc;">
+                                <span class="hidden-sm-up"><i class="ion-home"></i></span>
+                                <span class="hidden-xs-down" data-i18n="learning_process"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <input type="hidden" value="{{.UserID}}" name="user_id">
+                    <div class="box-body">
+
+                        <div class="timeline timeline-line-dotted">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/main/js/web/courses/userLearning_process.js"></script>

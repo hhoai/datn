@@ -1,0 +1,114 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xl-9 col-12">
+            <div class="box bg-primary-light">
+                <div class="box-body d-flex px-0">
+                    <div class="flex-grow-1 p-30 flex-grow-1 bg-img dask-bg bg-none-md" style="background-position: right bottom; background-size: auto 100%; background-image: url(/images/svg-icon/color-svg/custom-1.svg)">
+                        <div class="row">
+                            <div class="col-12 col-xl-7">
+                                <h2>Hi, <strong class="username"></strong></h2>
+
+                                <p class="text-dark my-10 font-size-16">
+                                    You completed <strong class="text-warning">80%</strong> of the tasks.
+                                </p>
+                                <p class="text-dark my-10 font-size-16">
+                                    Progress is <strong class="text-warning">very good!</strong>
+                                </p>
+                            </div>
+                            <div class="col-12 col-xl-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-12">
+            <div class="box bg-transparent no-shadow">
+                <div class="box-body p-xl-0 text-center">
+                    <h3 class="px-30 mb-20">Join New<br><b>Program</b>?</h3>
+                    <button type="button" class="waves-effect waves-light btn-block btn btn-primary" data-toggle="modal" data-target="#modal-join-course"><i class="fa fa-plus mr-15"></i> Join New Program</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="courses">
+        <div class="box">
+            <div class="col-12 col-mgr">
+                <div class="box-body">
+                    <div class="box no-shadow mb-0 bg-transparent">
+                        <div class="box-header no-border px-0">
+                            <h4 class="box-title" data-i18n="list-programs"></h4>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table no-border mb-0">
+                            <tbody id="list-programs">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+
+<div class="modal center-modal fade" id="modal-join-course" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" data-i18n="join_new_program"></h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" style="font-size: 14px; letter-spacing: .0178571429em; font-weight: 500; line-height: 1.25rem; color: #3c4043; ">
+                <div class="" style="display: flex;
+                    flex-direction: column;
+                    margin-top: 1rem;
+                    padding: 1.5rem;
+                    justify-content: space-between;
+                    max-width: 35rem;
+                    width: 100%;
+                    background-color: #fff;
+                    border: .0625rem solid #dadce0;
+                    border-radius: .5rem;
+                    overflow: hidden;
+                    ">
+                    <h5 data-i18n="program-code"></h5>
+                    <p data-i18n="req-program-code" style="font-weight: 400"></p>
+                    <div>
+                        <input type="text" id="course-code" placeholder="Program code" name="program-code" style="width: 100%;
+                            padding: 10px;
+                            outline-color: #1a73e8;">
+                    </div>
+                </div>
+                <div style="align-items: flex-start;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 1rem;
+                    max-width: 35rem;
+                    padding: 0 1.5rem;
+                    width: 100%;">
+                    <h5 data-i18n="how_to_sign_in_using_a_program_code"></h5>
+                    <ul style="list-style: disc;
+                        margin-top: .5rem;
+                        padding-left: 1rem;">
+                        <li data-i18n="use_an_authorized_account"></li>
+                        <li data-i18n="enter_the_program_code"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="close"></button>
+                <button type="button" id="join-new-program-btn" class="btn btn-primary float-right" data-i18n="join_new_program"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/main/js/web/program/student-programs.js"></script>
+<script src="/main/js/web/program/joinProgram.js"></script>
+

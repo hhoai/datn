@@ -1,0 +1,79 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="" style="width: 100%; padding: 0 10px;">
+                            <h3 class="page-title" data-i18n="student-assignment"></h3>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid #e0e0e0;">
+                                <h3 style="font-weight: 600" class="header" ><span data-i18n="assignment"></span>: </h3>
+                                <div style="display: flex; gap: 20px">
+                                    <div class="max-score">
+                                        <h4 data-i18n="score" style="margin: 10px 0;"></h4>
+                                    </div>
+                                    <div class="count-submitted">
+                                        <h4 data-i18n="submitted" style="margin: 10px 0;"></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; border-top: 1px solid #e0e0e0">
+                        <div id="list-students" style="border-right: 1px solid #e0e0e0; padding-right: 20px; padding-top: 20px; height: 400px; max-height: 400px; overflow-y: scroll;"></div>
+                        <div style="padding: 20px; width: 78%; position: relative">
+                            <div class="student"></div>
+                            <div id="assignment-content"></div>
+                            <div id="file-topic"></div>
+                            <div id="comment" style="position: absolute; bottom: 20px; width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal center-modal fade" id="preview-container" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="transform: translate(-100%, 50%) !important;">
+        <div class="modal-content" style="width:1000px;">
+            <div class="modal-header">
+                <h4 class="modal-title" data-i18n="preview_file"></h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="preview"></div>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Xóa -->
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel" data-i18n="cancel-submission"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="cancel-assignment"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="close"></button>
+                <button type="button" id="confirmDelete" class="btn btn-danger" data-i18n="cancel-submission"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/main/js/web/assignments/scoring.js"></script>

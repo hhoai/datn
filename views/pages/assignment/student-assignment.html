@@ -1,0 +1,132 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title"><span data-i18n="lesson"></span>: <span id="page-title"></span></h3>
+                        </div>
+                    </div>
+                    <div id="assignment-container">
+                        <div id="assignment-content"></div>
+                        <div id="file-container" style="width: fit-content; padding: 5px 105px;">
+                            <div id="file" class="media-list media-list-hover" style="width: fit-content"></div>
+                            <div id="img-file" class="media-list media-list-hover" style="width: fit-content"></div>
+                            <div id="mp4-file" class="media-list media-list-hover" style="width: fit-content"></div>
+                        </div>
+                        <div id="student-container" style="
+                                 margin: 30px 110px;
+                                 border-top: 1px solid #cfcfcf;
+                                 padding: 30px 0;">
+                            <div style="display: flex; justify-content: space-between">
+                                <div>
+                                    <div style="display: flex; align-items: center; justify-content: space-between">
+                                        <h4 data-i18n="your-assignment" style="margin-bottom: 20px;"></h4>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <span data-i18n="teacher-comment" style="font-weight: bold"></span> <span id="comment"></span>
+                                    </div>
+                                    <div id="file-student-assignment">
+                                        <div id="file-student" class="media-list media-list-hover" style="width: fit-content"></div>
+                                        <div id="img-file-student" class="media-list media-list-hover" style="width: fit-content"></div>
+                                        <div id="mp4-file-student" class="media-list media-list-hover" style="width: fit-content"></div>
+                                    </div>
+                                    <div class="add-file" style="display: flex">
+                                        <label for="add-file" class="btn btn-rounded btn-outline btn-primary" style="margin-bottom: 0; margin-top: 20px;"><i class="fa fa-plus"></i> <span data-i18n="add-file"></span></label>
+                                        <input class="dropdown-item" id="add-file" type="file" style="display: none">
+                                        <div class="new-file" style="display: flex;align-items: center;"></div>
+                                    </div>
+                                    <div>
+                                        <button data-i18n="submit" id="submit-assignment" class="btn btn-primary" style="margin-top: 20px;"></button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="padding-bottom: 40px">
+                                        <h5 data-i18n="status" class="t-ctr"></h5>
+                                        <div style="width: fit-content;" class="t-ctr">
+                                            <h4 class="status t-ctr"></h4>
+                                            <button class="btn btn-primary t-ctr cancel-submit-assignment" id="cancel-submit-assignment" data-i18n="cancel-submit-assignment"></button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 data-i18n="score" style="text-align: center"></h5>
+                                        <span style="color: red;" class="not-graded-yet t-ctr" data-i18n="not_graded_yet" ></span><span class="score t-ctr" style="display: none;"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal center-modal fade" id="preview-container" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="transform: translate(-100%, 50%) !important;">
+        <div class="modal-content" style="width:1000px;">
+            <div class="modal-header">
+                <h4 class="modal-title" data-i18n="preview_file"></h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="preview"></div>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Xóa -->
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel" data-i18n="confirm-delete-file"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="delete-file"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" id="confirmDelete" class="btn btn-danger" data-i18n="delete"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Xóa -->
+<div class="modal fade cert-modal" tabindex="-1" role="dialog" aria-labelledby="certModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="certModal" data-i18n="notification"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="cert-modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" id="confirmClaim" class="btn btn-success" data-i18n="claim-certification"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/main/js/web/assignments/student-assignment.js"></script>
+
+
+

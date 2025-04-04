@@ -1,0 +1,238 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title"><span data-i18n="lesson"></span>: {{.Title}}</h3>
+                        </div>
+                    </div>
+                    <ul class="nav nav-tabs customtab2" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/lessons/{{.LessonID}}/assignments" style="
+                background-color: #fff;
+                color: #0052cc;
+                border-bottom: 2px solid #0052cc;">
+                                <span class="hidden-sm-up"><i class="ion-home"></i></span>
+                                <span class="hidden-xs-down" data-i18n="assignments"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link" href="/lessons/{{.LessonID}}/posts"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down" data-i18n="posts"></span></a> </li>
+                    </ul>
+                    <div class="box-header" style="display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-primary btn-idx" data-toggle="modal" data-target=".create-assignment-modal">
+                            <span data-i18n="add-assignment"></span>
+                        </button>
+                    </div>
+                    <input type="hidden" value="{{.LessonID}}" name="lesson_id">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table id="assignmentTable" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                <thead>
+                                <tr>
+                                    <th style="width: 20px">#</th>
+                                    <th><span data-i18n="name"></span></th>
+                                    <th><span data-i18n="description"></span></th>
+                                    <th><span data-i18n="type"></span></th>
+                                    <th style="width: 60px"></th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- create assignment -->
+<div class="modal fade create-assignment-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel" data-i18n="add-assignment"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="create-course" style="padding: 10px">
+                    <form id="create-course-form">
+                        <div class="form-group row">
+                            <label for="title" class="col-sm-2 col-form-label" data-i18n="name"></label>
+                            <div class="col-sm-10">
+                                <input
+                                        class="form-control"
+                                        type="text"
+                                        name="title"
+                                        id="title"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="align-items: flex-start">
+                            <label for="description" class="col-sm-2 col-form-label" data-i18n="description"></label>
+                            <div class="col-sm-10">
+                                <textarea
+                                        id="description"
+                                        class="form-control"
+                                        style="
+                                    width: 100%;
+                                    height: 150px;
+                                    font-size: 14px;
+                                    line-height: 18px;
+                                    border: 1px solid rgb(221, 221, 221);
+                                    padding: 10px;"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="title" class="col-sm-2 col-form-label" data-i18n="type"></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="type_assignment_id" id="type_assignment_id">
+                                    {{range .TypeAssignments}}
+                                    <option value="{{.TypeAssignmentID}}">{{.Name}}</option>
+                                    {{end}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between">
+                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal" data-i18n="cancel"></button>
+                            <button type="submit" class="btn btn-success text-right" data-i18n="save"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!--update assignment-->
+<div class="modal modal-fill fade" data-backdrop="false" id="modal-fill" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border: none; max-height: 100vh; max-width: 1200px;">
+            <div class="modal-header">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="page-title" data-i18n="edit-assignment"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="box-body" style="padding:20px 70px">
+                    <div class="row">
+                        <div class="col-12 col-mgr">
+                            <div class="form-group row">
+                                <label for="title-assignment" class="col-lg-cus-1 col-form-label" data-i18n="name"></label>
+                                <div class="col-lg-cus-2">
+                                    <input class="form-control" type="text" name="title" id="title-assignment">
+                                </div>
+                            </div>
+                            <div class="form-group row" style="align-items: flex-start;">
+                                <label class="col-lg-cus-1 col-form-label" data-i18n="content"></label>
+                                <div class="col-lg-cus-2">
+<!--                                    <textarea class="form-control" rows="5" ></textarea>-->
+                                    <form action="/submit" method="POST">
+                                        <textarea id="body" name="content"></textarea>
+                                        <br>
+                                        <!--                                        <button type="submit">Gửi</button>-->
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="align-items: flex-start;">
+                                <label for="file" class="col-lg-cus-1 col-form-label" data-i18n="file"></label>
+                                <div class="col-lg-cus-2">
+                                    <div id="files">
+                                    </div>
+                                    <div>
+                                        <input class="form-control" type="file" id="file" style="height: fit-content">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="edit_type_assignment_id" class="col-lg-cus-1 col-form-label" data-i18n="type"></label>
+                                <div class="col-lg-cus-2">
+                                    <select class="form-control" name="edit_type_assignment_id" id="edit_type_assignment_id">
+                                        {{range .TypeAssignments}}
+                                        <option value="{{.TypeAssignmentID}}">{{.Name}}</option>
+                                        {{end}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="due_date" class="col-lg-cus-1 col-form-label" data-i18n="end-time"></label>
+                                <div class="col-lg-cus-2">
+                                    <input class="form-control" type="datetime-local" id="due_date">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="score" class="col-lg-cus-1 col-form-label" data-i18n="score"></label>
+                                <div class="col-lg-cus-2">
+                                    <input class="form-control" type="number" id="score" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <input type="hidden" name="assignmentId" id="assignmentId">
+                    <!-- /.row -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" class="btn btn-primary float-right" id="save-assignment" data-i18n="save"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Xóa -->
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to Delete this assignment?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal cap nhat -->
+<div class="modal fade update-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="updateModalLabel">Confirm Change</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to change this assignment?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmUpdate" class="btn btn-danger">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/main/js/web/lessons/details.js"></script>
+<script src="/main/js/web/file/index.js"></script>
+<script src="/main/js/web/assignments/update.js"></script>
+<script src="/main/js/web/assignments/delete.js"></script>
+<script src="/main/js/web/assignments/create.js"></script>

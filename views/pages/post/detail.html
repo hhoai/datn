@@ -1,0 +1,98 @@
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="col-12 col-mgr">
+                <div class="box">
+                    <div class="box-header" style="padding: 40px 0 0 20px;">
+                        <div class="d-flex align-items-center">
+                            <div class="mr-auto">
+                                <h3 class="page-title"><span style="padding-left: 20px;" data-i18n="lesson"></span></h3>
+                            </div>
+                        </div>
+                        <input type="hidden" value="{{.PostID}}" name="PostID" id="PostID">
+                    </div>
+                    <div style="display: flex; justify-content: space-between">
+                        <div class="post-details" style="width: 66%; padding: 5px 50px;">
+                            <div class="post-header" style="padding-bottom: 20px;"></div>
+                            <div class="file-default" style="margin-bottom: 20px;"></div>
+                            <div class="post-body"></div>
+                        </div>
+                        <div style="width: 33%;">
+                            <div id="post-container">
+                                <div id="post-content" style="width: fit-content"></div>
+                                <div id="file-container" style="width: fit-content; padding:30px 0;">
+                                    <div id="file" class="media-list media-list-hover" style="width: fit-content"></div>
+                                    <div id="img-file" class="media-list media-list-hover" style="width: fit-content"></div>
+                                    <div id="mp4-file" class="media-list media-list-hover" style="width: fit-content"></div>
+                                </div>
+                            </div>
+                            <div id="comment-container">
+                                <div class="d-md-flex justify-content-between align-items-center bg-white rounded20 overflow-hidden" style="border: 1px solid #cbd5e0;
+                                    padding: 10px 20px; margin: 30px 20px">
+                                    <input class="form-control b-0 py-10" type="text" placeholder="Type Message..." id="message">
+                                    <div class="d-flex justify-content-between align-items-center mt-md-0 mt-30" style="margin-bottom: 0;">
+                                        <button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-secondary">
+                                            <i class="mdi mdi-link"></i>
+                                        </button>
+                                        <button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-secondary">
+                                            <i class="mdi mdi-face"></i>
+                                        </button>
+                                        <button type="button" id="send-comment" class="waves-effect waves-circle btn btn-circle btn-primary">
+                                            <i class="mdi mdi-send"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="comment-content">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal center-modal fade" id="preview-container" tabindex="-1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="transform: translate(-100%, 50%) !important;">
+        <div class="modal-content" style="width:1000px;">
+            <div class="modal-header">
+                <h4 class="modal-title" data-i18n="preview_file"></h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="preview"></div>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Xóa -->
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel" data-i18n="confirm-delete-comment"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="delete-comment"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" id="confirmDelete" class="btn btn-danger" data-i18n="delete"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/main/js/web/posts/detail.js"></script>
+
+
+

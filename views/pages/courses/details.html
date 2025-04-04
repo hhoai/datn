@@ -1,0 +1,377 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title"><span data-i18n="course"></span>: {{.Title}}</h3>
+                        </div>
+                    </div>
+                    <ul class="nav nav-tabs customtab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home2" role="tab"><span
+                                class="hidden-sm-up"><i class="ion-home"></i></span> <span
+                                class="hidden-xs-down" data-i18n="lesson"></span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile2" role="tab"><span
+                                class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down"
+                                                                                             data-i18n="teachers"></span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages2" role="tab"><span
+                                class="hidden-sm-up"><i class="ion-email"></i></span> <span class="hidden-xs-down"
+                                                                                            data-i18n="students"></span></a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home2" role="tabpanel">
+                            <div class="p-15">
+                                <input type="hidden" name="course_id" value="{{.CourseID}}">
+                                <button type="button" id="create-lesson" class="btn btn-primary btn-idx"
+                                        data-toggle="modal" data-target=".create-lesson-modal">
+                                    <span data-i18n="add-lesson"></span>
+                                </button>
+                                <div class="table-responsive">
+                                    <table id="lessonTable"
+                                           class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 20px">#</th>
+                                            <th><span data-i18n="name"></span></th>
+                                            <th><span data-i18n="level"></span></th>
+                                            <th><span data-i18n="category"></span></th>
+                                            <th style="width: 60px;"></th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="profile2" role="tabpanel">
+                            <div class="p-15">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h3 class="page-title"><span data-i18n="list-of-teachers"></span></h3>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary add-teacher"
+                                        data-toggle="modal" id="openAddTeacherModal"
+                                        data-target=".create-teacher-modal">
+                                    <span data-i18n="add-teacher"></span>
+                                </button>
+                                <div class="media-list">
+                                    <div class="media align-items-center">
+                                        <div class="media-body media-list-hover" id="teacher-list">
+                                            <span class="badge badge-dot badge-danger badge-custom"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane" id="messages2" role="tabpanel">
+                            <div class="p-15">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h3 class="page-title"><span data-i18n="list-of-students"></span></h3>
+                                    </div>
+
+                                </div>
+                                <button type="button" class="btn btn-primary add-student"
+                                        data-toggle="modal" id="openAddStudentModal"
+                                        data-target=".create-student-modal" style=>
+                                    <span data-i18n="add-student"></span>
+                                </button>
+
+                                <div class="media-list">
+                                    <div class="media align-items-center">
+                                        <div class="media-body media-list-hover" id="student-list">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</section>
+
+<div class="modal fade create-teacher-modal" id="addTeacherModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="labelAdd" data-i18n="add-teacher"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="create-lesson" style="padding: 10px">
+                    <div id="create-teacher-form">
+
+                        <div class="form-group row">
+                            <label for="user_id" class="col-sm-2 col-form-label" data-i18n="teacher"></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="user_id">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: row-reverse; gap: 20px;">
+                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal"
+                                    data-i18n="cancel"></button>
+                            <button id="saveUser" class="btn btn-success text-right" data-i18n="save"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<style>
+    #student_list {
+        max-height: 125px !important;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    #student_list input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    #student_list label {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+</style>
+
+<div class="modal fade create-student-modal" id="addStudentModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="AddStudent" data-i18n="add-student"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="create-lesson" style="padding: 10px">
+                    <div id="create-student-form">
+                        <div class="form-group row justify-content-end">
+                            <label for="search_student" class="col-sm-2 col-form-label text-end" style="padding-right: 12px; text-align: end" data-i18n="search"></label>
+                            <div class="col-sm-4" style="padding-left: 0">
+                                <input type="search" id="search_student" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="form-group row">
+                            <label for="student_list" class="col-sm-2 col-form-label" data-i18n="student"></label>
+                            <div class="col-sm-10">
+                                <div id="student_list" style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: row-reverse; gap: 20px;">
+                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal"
+                                    data-i18n="cancel"></button>
+                            <button id="saveStudent" class="btn btn-success text-right" data-i18n="save"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal fade create-lesson-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="label" data-i18n="add-lesson"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="create-lesson" style="padding: 10px">
+                    <form id="create-lesson-form">
+                        <div class="form-group row">
+                            <label for="lesson_title" class="col-sm-2 col-form-label" data-i18n="name"></label>
+                            <div class="col-sm-10">
+                                <input
+                                        class="form-control"
+                                        type="text"
+                                        name="title"
+                                        id="lesson_title"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="level_id" class="col-sm-2 col-form-label" data-i18n="level"></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="level_id" id="level_id">
+                                    {{range .Level}}
+                                    <option value="{{.LevelID}}">{{.Name}}</option>
+                                    {{end}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lesson_category_id" class="col-sm-2 col-form-label"
+                                   data-i18n="category"></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="lesson_category_id" id="lesson_category_id">
+                                    {{range .LessonCategories}}
+                                    <option value="{{.LessonCategoryID}}">{{.Name}}</option>
+                                    {{end}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: row-reverse; gap: 20px;">
+                            <button type="button" class="btn btn-danger text-left" data-dismiss="modal"
+                                    data-i18n="cancel"></button>
+                            <button type="submit" class="btn btn-success text-right" data-i18n="save"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal center-modal fade setting-lesson-modal" id="setting-lesson-modal" tabindex="-1" role="dialog"
+     aria-labelledby="setting-lesson-modal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" data-i18n="edit-lesson"></h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 0 30px;">
+                <div class="form-group row">
+                    <input name="lesson_id" id="lesson_id" type="hidden">
+                    <label class="col-sm-2 col-form-label" style="width: fit-content" data-i18n="name"></label>
+                    <div class="col-sm-10">
+                        <input
+                                class="form-control"
+                                type="text"
+                                name="lesson_title"
+                        />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lesson_level_id-u" class="col-sm-2 col-form-label" data-i18n="level"></label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="lesson_level_id" id="lesson_level_id-u">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lesson_category_id-u" class="col-sm-2 col-form-label" data-i18n="category"></label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="lesson_category_id" id="lesson_category_id-u">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; gap: 20px;">
+                <button type="button" class="btn btn-primary float-right" id="update-lessons" data-i18n="save"></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--delete-->
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to Delete this lesson?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- update -->
+<div class="modal fade update-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="updateModalLabel">Confirm Change</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to change this lesson?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmUpdate" class="btn btn-danger">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade delete-user-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModal">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to Delete this User?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="deleteUser" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/main/js/web/courses/details.js"></script>
+<script src="/main/js/web/lessons/create.js"></script>
+<script src="/main/js/web/lessons/delete.js"></script>
+<script src="/main/js/web/lessons/update.js"></script>

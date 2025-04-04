@@ -1,0 +1,283 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12 col-mgr">
+            <div class="box">
+                <div class="box-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title"><span data-i18n="program"></span>: <span id="program_name"></span></h3>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-idx" id="openAddCourseModal" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <i class="fa fa-plus" aria-hidden="true"></i> <span data-i18n="add-course"></span>
+                    </button>
+
+                    <div class="table-responsive">
+                        <table id="userTable" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                            <thead>
+                            <tr>
+                                <th style="width: 5%;">#</th>
+                                <th style="width: 10%;"><span data-i18n="course-code"></span></th>
+                                <th style="width: 20%;"><span data-i18n="name"></span></th>
+                                <th style="width: 10%;"><span data-i18n="amount"></span></th>
+                                <th style="width: 15%;"><span data-i18n="level"></span></th>
+                                <th style="width: 15%;"><span data-i18n="category"></span></th>
+                                <th style="width: 15%;"><span data-i18n="program"></span></th>
+                                <th style="width: 10%;"><span data-i18n="status"></span></th>
+                                <th style="width: 10%;"><span data-i18n="action"></span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Create -->
+<div class="modal fade modal-add-course" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel" data-i18n="add-course"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="Form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title" data-i18n="name"></label>
+                                <input type="text" id="title" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="amount" data-i18n="amount"></label>
+                                <input type="number" id="amount" class="form-control" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="startTime" data-i18n="start-time"></label>
+                                <input type="date" id="startTime" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="endTime" data-i18n="end-time"></label>
+                                <input type="date" id="endTime" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category_id" data-i18n="category"></label>
+                                <select id="category_id" name="category_id" class="form-control">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="program_id" data-i18n="program"></label>
+                                <select id="program_id" name="program_id" class="form-control" disabled>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fileImage" data-i18n="file-image"></label>
+                                <input type="file" id="fileImage" class="form-control" style="line-height: 1.1;">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="level_id" data-i18n="level"></label>
+                                <select id="level_id" name="level_id" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="align-items: unset;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description" data-i18n="description"></label>
+                                <textarea id="description" rows="5" name="description" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="prerequisite_course_id" data-i18n="prerequisite-course"></label>
+                                <select id="prerequisite_course_id" name="prerequisite_course_id" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer custom-modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" id="saveCourse" class="btn btn-primary" data-i18n="save"></button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+<div class="modal fade delete-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteModalLabel">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to Delete this Course</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- edit course -->
+<div class="modal modal-edit-course fade" id="editCourseModal" tabindex="-1" role="dialog" aria-labelledby="editCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCourseModalLabel" data-i18n="edit-course"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div id="courseForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group d-flex align-items-center justify-content-between">
+                                <label for="editStatus" class="mr-3" data-i18n="status"></label>
+                                <div class="box-controls d-flex align-items-center">
+                                    <label class="switch switch-border switch-danger mb-0 mr-2">
+                                        <input type="checkbox" id="editStatus">
+                                        <span class="switch-indicator"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editTitle" data-i18n="name"></label>
+                                <input type="text" id="editTitle" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editAmount" data-i18n="amount"></label>
+                                <input type="number" id="editAmount" class="form-control" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editStartTime" data-i18n="start-time"></label>
+                                <input type="date" id="editStartTime" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editEndTime" data-i18n="end-time"></label>
+                                <input type="date" id="editEndTime" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editCategoryId" data-i18n="category"></label>
+                                <select id="editCategoryId" name="category_id" class="form-control">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editProgramId" data-i18n="program"></label>
+                                <select id="editProgramId" name="program_id" class="form-control">
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editFileImage" data-i18n="file-image"></label>
+                                <input type="file" id="editFileImage" class="form-control" style="line-height: 1.1;">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editLevelId" data-i18n="level"></label>
+                                <select id="editLevelId" name="level_id" class="form-control">
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="align-items: unset;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editDescription" data-i18n="description"></label>
+                                <textarea id="editDescription" rows="5" name="description" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit-prerequisite_course_id" data-i18n="prerequisite-course"></label>
+                                <select id="edit-prerequisite_course_id" name="prerequisite_course_id" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer custom-modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-i18n="cancel"></button>
+                <button type="button" id="editCourse" class="btn btn-primary" data-i18n="save"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/main/js/web/program/details.js"></script>
+<script src="/main/js/web/program/update.js"></script>
+
