@@ -65,100 +65,100 @@
             </li>
             {{end}}
 
-            <li class="treeview">
-                {{if CheckPermission "manager_questions" .Ctx}}
-                <a href="#">
-                    <i class="fa fa-question-circle"><span class="path1"></span><span class="path2"></span></i>
-                    <span data-i18n="manager-questions"></span>
-                    <span class="pull-right-container"> <i class="fa fa-angle-right pull-right"></i> </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="/question_bank">
-                            <span data-i18n="manager-questions"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/skills">
-                            <span data-i18n="skills"></span>
-                        </a>
-                    </li>
+<!--            <li class="treeview">-->
+<!--                {{if CheckPermission "manager_questions" .Ctx}}-->
+<!--                <a href="#">-->
+<!--                    <i class="fa fa-question-circle"><span class="path1"></span><span class="path2"></span></i>-->
+<!--                    <span data-i18n="manager-questions"></span>-->
+<!--                    <span class="pull-right-container"> <i class="fa fa-angle-right pull-right"></i> </span>-->
+<!--                </a>-->
+<!--                <ul class="treeview-menu">-->
+<!--                    <li>-->
+<!--                        <a href="/question_bank">-->
+<!--                            <span data-i18n="manager-questions"></span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="/skills">-->
+<!--                            <span data-i18n="skills"></span>-->
+<!--                        </a>-->
+<!--                    </li>-->
 
-                    <li>
-                        <a href="/challenges">
-                            <span data-i18n="challenges"></span>
-                        </a>
-                    </li>
-                </ul>
-                {{end}}
-            </li>
-            {{if CheckPermission "manager_topics" .Ctx}}
-            <li>
-                <a href="/topics">
-                    <i class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>
-                    <span data-i18n="manager-exams">Manage Exams</span>
-                </a>
-            </li>
-            {{end}}
-            {{if CheckPermission "manager_users" .Ctx}}
-            <li class="treeview">
-                {{if CheckTypeUser .Ctx 1}}
-                <a href="#">
-                    <i class="fa fa-users"><span class="path1"></span><span class="path2"></span></i>
-                    <span data-i18n="manager-users"></span>
-                    <span class="pull-right-container"> <i class="fa fa-angle-right pull-right"></i> </span>
-                </a>
-                <ul class="treeview-menu">
-                    {{if CheckPermission "manager_users" .Ctx}}
-                    <li>
-                        <a href="/users">
-                            <span data-i18n="users"></span>
-                        </a>
-                    </li>
-                    {{end}}
-                    {{if CheckPermission "manager_roles" .Ctx}}
-                    <li>
-                        <a href="/roles">
-                            <span data-i18n="roles"></span>
-                        </a>
-                    </li>
-                    {{end}}
-                </ul>
-                {{end}}
-            </li>
-            {{end}}
-            {{if CheckPermission "manager_posts" .Ctx}}
-            <li>
-                <a href="/news">
-                    <i class="fa fa-paper-plane"><span class="path1"></span><span class="path2"></span></i>
-                    <span data-i18n="manager-posts"></span>
-                </a>
-            </li>
-            {{end}}
-            {{if CheckPermission "manager_banners" .Ctx}}
-            <li>
-                <a href="/banners">
-                    <i class="fa fa-cloud"><span class="path1"></span><span class="path2"></span></i>
-                    <span data-i18n="manager-banners"></span>
-                </a>
-            </li>
-            {{end}}
-            {{if CheckPermission "manager_faqs" .Ctx}}
-            <li>
-                <a href="/faqs">
-                    <i class="fa fa-question"><span class="path1"></span><span class="path2"></span></i>
-                    <span data-i18n="manager-faqs"></span>
-                </a>
-            </li>
-            {{end}}
-            {{if CheckPermission "manager_faqs" .Ctx}}
-            <li>
-                <a href="/feedback">
-                    <i class="fa fa-envelope-o"><span class="path1"></span><span class="path2"></span></i>
-                    <span data-i18n="manager-feedback"></span>
-                </a>
-            </li>
-            {{end}}
+<!--                    <li>-->
+<!--                        <a href="/challenges">-->
+<!--                            <span data-i18n="challenges"></span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                {{end}}-->
+<!--            </li>-->
+<!--            {{if CheckPermission "manager_topics" .Ctx}}-->
+<!--            <li>-->
+<!--                <a href="/topics">-->
+<!--                    <i class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>-->
+<!--                    <span data-i18n="manager-exams">Manage Exams</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            {{end}}-->
+<!--            {{if CheckPermission "manager_users" .Ctx}}-->
+<!--            <li class="treeview">-->
+<!--                {{if CheckTypeUser .Ctx 1}}-->
+<!--                <a href="#">-->
+<!--                    <i class="fa fa-users"><span class="path1"></span><span class="path2"></span></i>-->
+<!--                    <span data-i18n="manager-users"></span>-->
+<!--                    <span class="pull-right-container"> <i class="fa fa-angle-right pull-right"></i> </span>-->
+<!--                </a>-->
+<!--                <ul class="treeview-menu">-->
+<!--                    {{if CheckPermission "manager_users" .Ctx}}-->
+<!--                    <li>-->
+<!--                        <a href="/users">-->
+<!--                            <span data-i18n="users"></span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    {{end}}-->
+<!--                    {{if CheckPermission "manager_roles" .Ctx}}-->
+<!--                    <li>-->
+<!--                        <a href="/roles">-->
+<!--                            <span data-i18n="roles"></span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    {{end}}-->
+<!--                </ul>-->
+<!--                {{end}}-->
+<!--            </li>-->
+<!--            {{end}}-->
+<!--            {{if CheckPermission "manager_posts" .Ctx}}-->
+<!--            <li>-->
+<!--                <a href="/news">-->
+<!--                    <i class="fa fa-paper-plane"><span class="path1"></span><span class="path2"></span></i>-->
+<!--                    <span data-i18n="manager-posts"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            {{end}}-->
+<!--            {{if CheckPermission "manager_banners" .Ctx}}-->
+<!--            <li>-->
+<!--                <a href="/banners">-->
+<!--                    <i class="fa fa-cloud"><span class="path1"></span><span class="path2"></span></i>-->
+<!--                    <span data-i18n="manager-banners"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            {{end}}-->
+<!--            {{if CheckPermission "manager_faqs" .Ctx}}-->
+<!--            <li>-->
+<!--                <a href="/faqs">-->
+<!--                    <i class="fa fa-question"><span class="path1"></span><span class="path2"></span></i>-->
+<!--                    <span data-i18n="manager-faqs"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            {{end}}-->
+<!--            {{if CheckPermission "manager_faqs" .Ctx}}-->
+<!--            <li>-->
+<!--                <a href="/feedback">-->
+<!--                    <i class="fa fa-envelope-o"><span class="path1"></span><span class="path2"></span></i>-->
+<!--                    <span data-i18n="manager-feedback"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            {{end}}-->
         </ul>
     </section>
 
